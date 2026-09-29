@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        SENTRIX AI Cybersecurity SOC Analyst
+    </title>
+
+    <!-- Orbitron Font -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     HUD BACKGROUND
+===================================================== -->
+
+<div class="hud-background">
+
+    <div class="grid-layer"></div>
+
+    <div class="scan-line"></div>
+
+    <div class="glow-circle glow-1"></div>
+
+    <div class="glow-circle glow-2"></div>
+
+    <div class="glow-circle glow-3"></div>
+
+</div>
+
+
+<!-- =====================================================
+     LOGIN SCREEN
+===================================================== -->
+
+<div id="loginScreen"
+     class="login-screen">
+
+    <div class="login-box">
+
+        <div class="login-header">
+
+            <div class="login-core">
+
+                <div class="core-ring ring-a"></div>
+
+                <div class="core-ring ring-b"></div>
+
+                <div class="core-ring ring-c"></div>
+
+                <div class="core-center">
+                    AI
+                </div>
+
+            </div>
+
+            <h1>
+                SENTRIX SECURITY SYSTEM
+            </h1>
+
+            <p>
+                Artificial Intelligence Cyber Defense Platform
+            </p>
+
+        </div>
+
+
+        <div class="access-level">
+
+            ACCESS LEVEL :
+            ADMINISTRATOR
+
+        </div>
+
+
+        <div class="login-form">
+
+            <label>
+                USERNAME
+            </label>
+
+            <input type="text"
+                   id="username"
+                   placeholder="Enter Username">
+
+
+            <label>
+                PASSWORD
+            </label>
+
+            <input type="password"
+                   id="password"
+                   placeholder="Enter Password">
+
+
+            <button
+                onclick="login()"
+                class="login-btn">
+
+                AUTHENTICATE
+
+            </button>
+
+        </div>
+
+
+        <div id="loginMessage"
+             class="login-message">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN APPLICATION
+===================================================== -->
+
+<div id="appContainer"
+     class="hidden-app">
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-top">
+
+        <div class="logo-box">
+
+            <div class="logo-icon">
+
+                ⚡
+
+            </div>
+
+            <div>
+
+                <h2>
+                    SENTRIX
+                </h2>
+
+                <span>
+                    AI DEFENSE CORE
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <button class="nav-item active"
+                onclick="showPage('dashboard', this)">
+
+            <span>📊</span>
+
+            Dashboard
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showPage('alerts', this)">
+
+            <span>🚨</span>
+
+            Security Alerts
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showPage('threats', this)">
+
+            <span>🌐</span>
+
+            Threat Intel
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showPage('detection', this)">
+
+            <span>🤖</span>
+
+            AI Detection
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showPage('investigation', this)">
+
+            <span>🕵️</span>
+
+            Investigation
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showPage('reports', this)">
+
+            <span>📄</span>
+
+            Reports
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showPage('health', this)">
+
+            <span>💻</span>
+
+            System Health
+
+        </button>
+
+    </nav>
+
+
+    <div class="sidebar-footer">
+
+        <div class="system-online">
+
+            <div class="pulse-dot"></div>
+
+            <div>
+
+                <strong>
+                    CORE ONLINE
+                </strong>
+
+                <small>
+                    All Systems Operational
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
+<header class="topbar">
+
+    <div>
+
+        <h1 id="page-title">
+
+            SENTRIX Command Center
+
+        </h1>
+
+        <p id="page-description">
+
+            AI-Powered Cyber Defense System
+
+        </p>
+
+    </div>
+
+
+    <div class="topbar-right">
+
+        <div id="liveClock"
+             class="live-clock">
+
+            00:00:00
+
+        </div>
+
+
+        <div class="notification">
+
+            🔔
+
+            <span class="notification-count">
+
+                12
+
+            </span>
+
+        </div>
+
+
+        <div class="profile">
+
+            <div class="profile-avatar">
+
+                A
+
+            </div>
+
+            <div>
+
+                <strong>
+                    Administrator
+                </strong>
+
+                <small>
+                    Level 5 Access
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     DASHBOARD PAGE
+===================================================== -->
+
+<section id="dashboard"
+         class="page active-page">
+
+<!-- =====================================================
+     HERO SECTION
+===================================================== -->
+
+<div class="jarvis-hero">
+
+    <div class="hero-left">
+
+        <span class="hero-badge">
+
+            AI CYBER DEFENSE ACTIVE
+
+        </span>
+
+        <h2>
+
+            Welcome Administrator
+
+        </h2>
+
+        <p>
+
+            SENTRIX AI Security Platform is actively
+            monitoring network traffic, endpoint
+            activities, threat intelligence feeds,
+            suspicious log events and automated
+            investigations.
+
+        </p>
+
+    </div>
+
+
+    <div class="hero-right">
+
+        <div class="jarvis-core">
+
+            <div class="ring ring1"></div>
+
+            <div class="ring ring2"></div>
+
+            <div class="ring ring3"></div>
+
+            <div class="ring ring4"></div>
+
+            <div class="core-text">
+
+                STX
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     STATS GRID
+===================================================== -->
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+
+            🚨
+
+        </div>
+
+        <div>
+
+            <p>Total Events</p>
+
+            <h2 id="totalAlerts">
+
+                12847
+
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+
+            ⚠️
+
+        </div>
+
+        <div>
+
+            <p>Critical Alerts</p>
+
+            <h2 id="criticalAlerts">
+
+                2
+
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+
+            🎯
+
+        </div>
+
+        <div>
+
+            <p>Threats Detected</p>
+
+            <h2 id="activeThreats">
+
+                7
+
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+
+            🔎
+
+        </div>
+
+        <div>
+
+            <p>Active Agents</p>
+
+            <h2 id="activeAgents">
+
+                6
+
+            </h2>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- =====================================================
+     DASHBOARD GRID
+===================================================== -->
+
+<div class="dashboard-grid">
+
+    <!-- ==========================================
+         THREAT RADAR
+    =========================================== -->
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Threat Radar
+                </h3>
+
+                <p>
+                    Real-time network monitoring
+                </p>
+
+            </div>
+
+            <span class="status-tag">
+                ACTIVE
+            </span>
+
+        </div>
+
+        <div class="radar-container">
+
+            <div class="radar-circle radar-1"></div>
+
+            <div class="radar-circle radar-2"></div>
+
+            <div class="radar-circle radar-3"></div>
+
+            <div class="radar-line"></div>
+
+            <div class="radar-dot dot-1"></div>
+
+            <div class="radar-dot dot-2"></div>
+
+            <div class="radar-dot dot-3"></div>
+
+            <div class="radar-dot dot-4"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         THREAT LEVEL
+    =========================================== -->
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Global Threat Level
+                </h3>
+
+                <p>
+                    Current security posture
+                </p>
+
+            </div>
+
+            <span class="danger-badge">
+                HIGH
+            </span>
+
+        </div>
+
+        <div class="threat-meter">
+
+            <div class="meter-ring">
+
+                <div class="meter-value">
+
+                    72%
+
+                </div>
+
+                <div class="meter-label">
+
+                    Risk Score
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="risk-grid">
+
+            <div>
+
+                <span class="risk-dot critical"></span>
+
+                Critical
+
+                <strong>7</strong>
+
+            </div>
+
+            <div>
+
+                <span class="risk-dot high"></span>
+
+                High
+
+                <strong>16</strong>
+
+            </div>
+
+            <div>
+
+                <span class="risk-dot medium"></span>
+
+                Medium
+
+                <strong>31</strong>
+
+            </div>
+
+            <div>
+
+                <span class="risk-dot low"></span>
+
+                Low
+
+                <strong>74</strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     LIVE AI TERMINAL
+===================================================== -->
+
+<div class="panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h3>
+                AI Threat Analysis Engine
+            </h3>
+
+            <p>
+                Real-time SOC terminal
+            </p>
+
+        </div>
+
+        <span class="status-tag">
+            RUNNING
+        </span>
+
+    </div>
+
+    <div class="terminal-window">
+
+        <div class="terminal-header">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <div id="terminalOutput"
+             class="terminal-output">
+
+            Initializing AI Core...
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ATTACK MAP
+===================================================== -->
+
+<div class="panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h3>
+                Global Attack Map
+            </h3>
+
+            <p>
+                Incoming suspicious traffic
+            </p>
+
+        </div>
+
+        <span class="status-tag">
+
+            LIVE
+
+        </span>
+
+    </div>
+
+    <div class="attack-map">
+
+        <div class="map-grid">
+
+            <div class="attack-node node-1"></div>
+            <div class="attack-node node-2"></div>
+            <div class="attack-node node-3"></div>
+            <div class="attack-node node-4"></div>
+            <div class="attack-node node-5"></div>
+
+            <div class="attack-line line-1"></div>
+            <div class="attack-line line-2"></div>
+            <div class="attack-line line-3"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     RECENT ALERTS
+===================================================== -->
+
+<div class="panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h3>
+                Recent Security Alerts
+            </h3>
+
+            <p>
+                Latest AI detections
+            </p>
+
+        </div>
+
+        <button class="view-button"
+                onclick="showPage('alerts')">
+
+            View All
+
+        </button>
+
+    </div>
+
+
+    <div class="alert-feed">
+
+        <div class="alert-row">
+
+            <div class="alert-icon critical-icon">
+
+                ⚠
+
+            </div>
+
+            <div class="alert-content">
+
+                <strong>
+                    Brute Force Attack
+                </strong>
+
+                <small>
+                    Source: 192.168.1.25
+                </small>
+
+            </div>
+
+            <span class="severity critical-text">
+
+                Critical
+
+            </span>
+
+        </div>
+
+
+        <div class="alert-row">
+
+            <div class="alert-icon high-icon">
+
+                !
+
+            </div>
+
+            <div class="alert-content">
+
+                <strong>
+                    Malware Activity
+                </strong>
+
+                <small>
+                    Source: 10.0.0.12
+                </small>
+
+            </div>
+
+            <span class="severity high-text">
+
+                High
+
+            </span>
+
+        </div>
+
+
+        <div class="alert-row">
+
+            <div class="alert-icon medium-icon">
+
+                !
+
+            </div>
+
+            <div class="alert-content">
+
+                <strong>
+                    Port Scanning Detected
+                </strong>
+
+                <small>
+                    Source: 172.16.0.8
+                </small>
+
+            </div>
+
+            <span class="severity medium-text">
+
+                Medium
+
+            </span>
+
+        </div>
+
+
+        <div class="alert-row">
+
+            <div class="alert-icon low-icon">
+
+                ✓
+
+            </div>
+
+            <div class="alert-content">
+
+                <strong>
+                    Failed Login Attempt
+                </strong>
+
+                <small>
+                    Source: 10.10.1.2
+                </small>
+
+            </div>
+
+            <span class="severity low-text">
+
+                Low
+
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+<!-- =====================================================
+     SECURITY ALERTS PAGE
+===================================================== -->
+
+<section id="alerts"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                🚨 Security Alerts
+            </h2>
+
+            <p>
+                Monitor and manage security incidents.
+            </p>
+
+        </div>
+
+        <button class="primary-button">
+
+            + New Alert
+
+        </button>
+
+    </div>
+
+
+    <div class="filter-bar">
+
+        <input type="text"
+               id="alertSearch"
+               placeholder="Search alerts..."
+               onkeyup="searchAlerts()">
+
+
+        <select id="severityFilter"
+                onchange="filterAlerts()">
+
+            <option value="all">
+                All Severities
+            </option>
+
+            <option value="critical">
+                Critical
+            </option>
+
+            <option value="high">
+                High
+            </option>
+
+            <option value="medium">
+                Medium
+            </option>
+
+            <option value="low">
+                Low
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="table-panel">
+
+        <table id="alertsTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Threat</th>
+                    <th>Source</th>
+                    <th>Severity</th>
+                    <th>Status</th>
+                    <th>Time</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>ALT-001</td>
+
+                    <td>
+                        Brute Force Attack
+                    </td>
+
+                    <td>
+                        192.168.1.25
+                    </td>
+
+                    <td>
+                        <span class="table-critical">
+                            Critical
+                        </span>
+                    </td>
+
+                    <td>
+                        Open
+                    </td>
+
+                    <td>
+                        2 min ago
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>ALT-002</td>
+
+                    <td>
+                        Malware Detection
+                    </td>
+
+                    <td>
+                        192.168.1.44
+                    </td>
+
+                    <td>
+                        <span class="table-high">
+                            High
+                        </span>
+                    </td>
+
+                    <td>
+                        Investigating
+                    </td>
+
+                    <td>
+                        8 min ago
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>ALT-003</td>
+
+                    <td>
+                        Port Scan
+                    </td>
+
+                    <td>
+                        10.0.0.18
+                    </td>
+
+                    <td>
+                        <span class="table-medium">
+                            Medium
+                        </span>
+                    </td>
+
+                    <td>
+                        Open
+                    </td>
+
+                    <td>
+                        15 min ago
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>ALT-004</td>
+
+                    <td>
+                        Failed Login
+                    </td>
+
+                    <td>
+                        10.0.0.21
+                    </td>
+
+                    <td>
+                        <span class="table-low">
+                            Low
+                        </span>
+                    </td>
+
+                    <td>
+                        Resolved
+                    </td>
+
+                    <td>
+                        22 min ago
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     THREAT INTELLIGENCE PAGE
+===================================================== -->
+
+<section id="threats"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                🌐 Threat Intelligence
+            </h2>
+
+            <p>
+                Analyze indicators of compromise and
+                external threat intelligence feeds.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="intel-grid">
+
+        <!-- Investigation Form -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h3>
+                        Indicator Investigation
+                    </h3>
+
+                    <p>
+                        Query suspicious indicators
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-panel">
+
+                <label>
+                    Indicator Type
+                </label>
+
+                <select id="indicatorType">
+
+                    <option>
+                        IP Address
+                    </option>
+
+                    <option>
+                        Domain
+                    </option>
+
+                    <option>
+                        URL
+                    </option>
+
+                    <option>
+                        File Hash
+                    </option>
+
+                </select>
+
+
+                <label>
+                    Indicator
+                </label>
+
+                <input type="text"
+                       id="indicator"
+                       placeholder="Enter indicator">
+
+
+                <button class="primary-button"
+                        onclick="investigateIndicator()">
+
+                    Analyze Indicator
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Threat Feed -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h3>
+                        Live Threat Feed
+                    </h3>
+
+                    <p>
+                        External intelligence sources
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feed-list">
+
+                <div class="feed-item">
+
+                    <span class="feed-dot red"></span>
+
+                    Active Ransomware Campaign
+                    Detected
+
+                </div>
+
+                <div class="feed-item">
+
+                    <span class="feed-dot orange"></span>
+
+                    New Phishing Infrastructure
+                    Observed
+
+                </div>
+
+                <div class="feed-item">
+
+                    <span class="feed-dot yellow"></span>
+
+                    Malicious Domain Cluster
+                    Updated
+
+                </div>
+
+                <div class="feed-item">
+
+                    <span class="feed-dot green"></span>
+
+                    Threat Feed Synchronization
+                    Successful
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="threatResult"
+         class="result-panel hidden">
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     AI DETECTION ENGINE
+===================================================== -->
+
+<section id="detection"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                🤖 AI Detection Engine
+            </h2>
+
+            <p>
+                Analyze logs using machine learning
+                and behavioral detection.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Security Log Analysis
+                </h3>
+
+                <p>
+                    AI-powered anomaly detection
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-panel">
+
+            <label>
+                Security Log
+            </label>
+
+            <textarea id="securityLog"
+                      rows="12"
+                      placeholder="Paste security logs here..."></textarea>
+
+
+            <button class="primary-button"
+                    onclick="analyzeLog()">
+
+                Run AI Analysis
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Detection Models
+                </h3>
+
+                <p>
+                    Active machine learning modules
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="model-grid">
+
+            <div class="model-card">
+
+                <h4>
+                    Threat Detection
+                </h4>
+
+                <span>
+                    ACTIVE
+                </span>
+
+            </div>
+
+            <div class="model-card">
+
+                <h4>
+                    Anomaly Detection
+                </h4>
+
+                <span>
+                    ACTIVE
+                </span>
+
+            </div>
+
+            <div class="model-card">
+
+                <h4>
+                    Risk Scoring
+                </h4>
+
+                <span>
+                    ACTIVE
+                </span>
+
+            </div>
+
+            <div class="model-card">
+
+                <h4>
+                    Correlation Engine
+                </h4>
+
+                <span>
+                    ACTIVE
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="detectionResult"
+         class="result-panel hidden">
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INVESTIGATION PAGE
+===================================================== -->
+
+<section id="investigation"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                🕵️ Investigation Center
+            </h2>
+
+            <p>
+                Automated security investigations
+                and forensic workflows.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="investigation-layout">
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h3>
+                        Investigation Request
+                    </h3>
+
+                    <p>
+                        Start automated analysis
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-panel">
+
+                <label>
+                    Alert ID
+                </label>
+
+                <input type="text"
+                       id="investigationId"
+                       placeholder="ALT-001">
+
+
+                <label>
+                    Investigation Type
+                </label>
+
+                <select id="investigationType">
+
+                    <option>
+                        Full Investigation
+                    </option>
+
+                    <option>
+                        Network Investigation
+                    </option>
+
+                    <option>
+                        Endpoint Investigation
+                    </option>
+
+                    <option>
+                        User Investigation
+                    </option>
+
+                </select>
+
+
+                <button class="primary-button"
+                        onclick="startInvestigation()">
+
+                    Launch Investigation
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h3>
+                        Investigation Queue
+                    </h3>
+
+                    <p>
+                        Running AI investigations
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="queue-list">
+
+                <div class="queue-item">
+
+                    ALT-001
+                    <span>
+                        Running
+                    </span>
+
+                </div>
+
+                <div class="queue-item">
+
+                    ALT-002
+                    <span>
+                        Running
+                    </span>
+
+                </div>
+
+                <div class="queue-item">
+
+                    ALT-004
+                    <span>
+                        Completed
+                    </span>
+
+                </div>
+
+                <div class="queue-item">
+
+                    ALT-005
+                    <span>
+                        Completed
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="investigationResult"
+         class="result-panel hidden">
+
+    </div>
+
+</section>
+<!-- =====================================================
+     REPORTS PAGE
+===================================================== -->
+
+<section id="reports"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                📄 Security Reports
+            </h2>
+
+            <p>
+                Generate AI-powered cybersecurity reports.
+            </p>
+
+        </div>
+
+        <div class="header-status">
+
+            <span class="status-dot"></span>
+
+            REPORT ENGINE ONLINE
+
+        </div>
+
+    </div>
+
+
+    <!-- REPORT GENERATION CARDS -->
+
+    <div class="report-grid">
+
+        <!-- INCIDENT REPORT -->
+
+        <div class="report-card">
+
+            <div class="report-icon">
+                🚨
+            </div>
+
+            <div class="report-content">
+
+                <h3>
+                    Incident Report
+                </h3>
+
+                <p>
+                    Generate a detailed report for
+                    detected security incidents.
+                </p>
+
+                <div class="report-meta">
+
+                    <span>
+                        AI Generated
+                    </span>
+
+                    <span>
+                        PDF / JSON
+                    </span>
+
+                </div>
+
+                <button
+                    class="primary-button"
+                    onclick="generateReport('incident')">
+
+                    Generate Report
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- THREAT INTELLIGENCE REPORT -->
+
+        <div class="report-card">
+
+            <div class="report-icon">
+                🌐
+            </div>
+
+            <div class="report-content">
+
+                <h3>
+                    Threat Intelligence
+                </h3>
+
+                <p>
+                    Generate a threat intelligence
+                    analysis report.
+                </p>
+
+                <div class="report-meta">
+
+                    <span>
+                        IOC Analysis
+                    </span>
+
+                    <span>
+                        PDF / JSON
+                    </span>
+
+                </div>
+
+                <button
+                    class="primary-button"
+                    onclick="generateReport('threat-intelligence')">
+
+                    Generate Report
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- EXECUTIVE REPORT -->
+
+        <div class="report-card">
+
+            <div class="report-icon">
+                📊
+            </div>
+
+            <div class="report-content">
+
+                <h3>
+                    Executive Report
+                </h3>
+
+                <p>
+                    High-level security overview
+                    for management.
+                </p>
+
+                <div class="report-meta">
+
+                    <span>
+                        Executive Summary
+                    </span>
+
+                    <span>
+                        PDF
+                    </span>
+
+                </div>
+
+                <button
+                    class="primary-button"
+                    onclick="generateReport('executive')">
+
+                    Generate Report
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- TECHNICAL REPORT -->
+
+        <div class="report-card">
+
+            <div class="report-icon">
+                💻
+            </div>
+
+            <div class="report-content">
+
+                <h3>
+                    Technical Report
+                </h3>
+
+                <p>
+                    Detailed technical analysis of
+                    cybersecurity events.
+                </p>
+
+                <div class="report-meta">
+
+                    <span>
+                        SOC Analysis
+                    </span>
+
+                    <span>
+                        PDF / JSON
+                    </span>
+
+                </div>
+
+                <button
+                    class="primary-button"
+                    onclick="generateReport('technical')">
+
+                    Generate Report
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- REPORT RESULT -->
+
+    <div id="reportResult"
+         class="result-panel hidden">
+
+    </div>
+
+
+    <!-- REPORT TERMINAL -->
+
+    <div class="panel report-terminal-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    SENTRIX Report Engine
+                </h3>
+
+                <p>
+                    Automated report generation console
+                </p>
+
+            </div>
+
+            <span class="status-tag">
+                READY
+            </span>
+
+        </div>
+
+
+        <div id="reportTerminal"
+             class="terminal-window">
+
+            <div class="terminal-output">
+
+                <div>
+                    > SENTRIX REPORT ENGINE INITIALIZED
+                </div>
+
+                <div>
+                    > Waiting for report request...
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SYSTEM HEALTH PAGE
+===================================================== -->
+
+<section id="health"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                💻 System Health
+            </h2>
+
+            <p>
+                Monitor SENTRIX cybersecurity
+                infrastructure and services.
+            </p>
+
+        </div>
+
+        <button
+            class="primary-button"
+            onclick="checkHealth()">
+
+            Run Health Scan
+
+        </button>
+
+    </div>
+
+
+    <!-- SYSTEM OVERVIEW -->
+
+    <div class="health-overview">
+
+        <div class="health-main-status">
+
+            <div class="health-core">
+
+                <div class="health-ring ring-one"></div>
+
+                <div class="health-ring ring-two"></div>
+
+                <div class="health-ring ring-three"></div>
+
+                <div class="health-center">
+
+                    <span>
+                        100%
+                    </span>
+
+                    <small>
+                        HEALTH
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="health-summary">
+
+                <span class="status-dot"></span>
+
+                <strong>
+                    ALL SYSTEMS OPERATIONAL
+                </strong>
+
+                <p>
+                    SENTRIX core services are
+                    currently available.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HEALTH SERVICES -->
+
+    <div class="health-grid">
+
+        <!-- BACKEND -->
+
+        <div class="health-card"
+             data-service="backend">
+
+            <div class="health-card-header">
+
+                <div class="service-icon">
+                    ⚙
+                </div>
+
+                <div>
+
+                    <h3>
+                        FastAPI Backend
+                    </h3>
+
+                    <small>
+                        API Service
+                    </small>
+
+                </div>
+
+                <span class="health-indicator online">
+                    ONLINE
+                </span>
+
+            </div>
+
+            <div class="health-details">
+
+                <div>
+
+                    <span>
+                        Status
+                    </span>
+
+                    <strong>
+                        Operational
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Endpoint
+                    </span>
+
+                    <strong>
+                        /api/v1
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DATABASE -->
+
+        <div class="health-card"
+             data-service="database">
+
+            <div class="health-card-header">
+
+                <div class="service-icon">
+                    🗄
+                </div>
+
+                <div>
+
+                    <h3>
+                        Database
+                    </h3>
+
+                    <small>
+                        Data Storage
+                    </small>
+
+                </div>
+
+                <span class="health-indicator online">
+                    ONLINE
+                </span>
+
+            </div>
+
+            <div class="health-details">
+
+                <div>
+
+                    <span>
+                        Status
+                    </span>
+
+                    <strong>
+                        Connected
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Response
+                    </span>
+
+                    <strong>
+                        12 ms
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- AI ENGINE -->
+
+        <div class="health-card"
+             data-service="ai-engine">
+
+            <div class="health-card-header">
+
+                <div class="service-icon">
+                    🤖
+                </div>
+
+                <div>
+
+                    <h3>
+                        AI Engine
+                    </h3>
+
+                    <small>
+                        ML Detection
+                    </small>
+
+                </div>
+
+                <span class="health-indicator online">
+                    ONLINE
+                </span>
+
+            </div>
+
+            <div class="health-details">
+
+                <div>
+
+                    <span>
+                        Status
+                    </span>
+
+                    <strong>
+                        Ready
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Model
+                    </span>
+
+                    <strong>
+                        Loaded
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- THREAT INTELLIGENCE -->
+
+        <div class="health-card"
+             data-service="threat-intelligence">
+
+            <div class="health-card-header">
+
+                <div class="service-icon">
+                    🌐
+                </div>
+
+                <div>
+
+                    <h3>
+                        Threat Intelligence
+                    </h3>
+
+                    <small>
+                        Intelligence Service
+                    </small>
+
+                </div>
+
+                <span class="health-indicator online">
+                    ONLINE
+                </span>
+
+            </div>
+
+            <div class="health-details">
+
+                <div>
+
+                    <span>
+                        Status
+                    </span>
+
+                    <strong>
+                        Synchronized
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Feeds
+                    </span>
+
+                    <strong>
+                        Active
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DETECTION ENGINE -->
+
+        <div class="health-card"
+             data-service="detection">
+
+            <div class="health-card-header">
+
+                <div class="service-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h3>
+                        Detection Engine
+                    </h3>
+
+                    <small>
+                        Security Detection
+                    </small>
+
+                </div>
+
+                <span class="health-indicator online">
+                    ONLINE
+                </span>
+
+            </div>
+
+            <div class="health-details">
+
+                <div>
+
+                    <span>
+                        Status
+                    </span>
+
+                    <strong>
+                        Monitoring
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Rules
+                    </span>
+
+                    <strong>
+                        Active
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CORRELATION ENGINE -->
+
+        <div class="health-card"
+             data-service="correlation">
+
+            <div class="health-card-header">
+
+                <div class="service-icon">
+                    🔗
+                </div>
+
+                <div>
+
+                    <h3>
+                        Correlation Engine
+                    </h3>
+
+                    <small>
+                        Event Correlation
+                    </small>
+
+                </div>
+
+                <span class="health-indicator online">
+                    ONLINE
+                </span>
+
+            </div>
+
+            <div class="health-details">
+
+                <div>
+
+                    <span>
+                        Status
+                    </span>
+
+                    <strong>
+                        Processing
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Events
+                    </span>
+
+                    <strong>
+                        Live
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HEALTH TERMINAL -->
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    System Diagnostics
+                </h3>
+
+                <p>
+                    SENTRIX diagnostic console
+                </p>
+
+            </div>
+
+            <span class="status-tag">
+                MONITORING
+            </span>
+
+        </div>
+
+
+        <div id="healthTerminal"
+             class="terminal-window">
+
+            <div class="terminal-output">
+
+                <div>
+                    > INITIALIZING SYSTEM DIAGNOSTICS...
+                </div>
+
+                <div>
+                    > BACKEND ................. ONLINE
+                </div>
+
+                <div>
+                    > DATABASE ................ ONLINE
+                </div>
+
+                <div>
+                    > AI ENGINE ............... ONLINE
+                </div>
+
+                <div>
+                    > THREAT INTELLIGENCE ..... ONLINE
+                </div>
+
+                <div>
+                    > CORRELATION ENGINE ...... ONLINE
+                </div>
+
+                <div>
+                    > SYSTEM STATUS: NOMINAL
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+    SENTRIX COMMAND TERMINAL
+===================================================== -->
+
+<div class="jarvis-command-panel">
+
+    <div class="command-header">
+
+        <div>
+
+            <span class="command-status"></span>
+
+            SENTRIX COMMAND INTERFACE
+
+        </div>
+
+        <span>
+            SECURE CHANNEL
+        </span>
+
+    </div>
+
+
+    <div id="jarvisResponse"
+         class="jarvis-response">
+
+        <div>
+            SENTRIX: Systems ready, Administrator.
+        </div>
+
+        <div>
+            SENTRIX: Awaiting command...
+        </div>
+
+    </div>
+
+
+    <div class="command-input-wrapper">
+
+        <span class="command-prefix">
+            &gt;
+        </span>
+
+        <input
+            type="text"
+            id="terminal-input"
+            placeholder="Enter command..."
+            autocomplete="off">
+
+        <button
+            onclick="executeTerminalCommand()">
+
+            EXECUTE
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     APPLICATION FOOTER
+===================================================== -->
+
+<footer class="application-footer">
+
+    <div>
+
+        <strong>
+            SENTRIX AI CYBERSECURITY SOC
+        </strong>
+
+        <span>
+            Autonomous Security Monitoring Platform
+        </span>
+
+    </div>
+
+
+    <div class="footer-right">
+
+        <span>
+            SYSTEM STATUS:
+        </span>
+
+        <strong class="footer-online">
+            ONLINE
+        </strong>
+
+        <span>
+            |
+        </span>
+
+        <span>
+            SECURE CHANNEL
+        </span>
+
+    </div>
+
+</footer>
+
+
+</main>
+
+</div>
+
+
+<!-- =====================================================
+     SECURITY OVERLAY
+===================================================== -->
+
+<div id="securityOverlay"
+     class="security-overlay hidden">
+
+    <div class="overlay-content">
+
+        <div class="overlay-core">
+
+            <div class="overlay-ring"></div>
+
+            <div class="overlay-ring"></div>
+
+            <div class="overlay-ring"></div>
+
+            <span>
+                AI
+            </span>
+
+        </div>
+
+        <h2>
+            SECURITY SCAN IN PROGRESS
+        </h2>
+
+        <p id="overlayMessage">
+            SENTRIX is analyzing system activity...
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+<!-- =====================================================
+    BASIC SENTRIX COMMAND FALLBACK
+===================================================== -->
+
+<script>
+
+    /*
+    * This small fallback allows the SENTRIX command
+     * terminal to work even before the main script.js
+     * is fully connected.
+     */
+
+    function executeTerminalCommand() {
+
+        const input =
+            document.getElementById("terminal-input");
+
+        const response =
+            document.getElementById("jarvisResponse");
+
+        if (!input || !response) {
+            return;
+        }
+
+        const command =
+            input.value.trim();
+
+        if (!command) {
+            return;
+        }
+
+        const line =
+            document.createElement("div");
+
+        line.innerHTML =
+            "&gt; " +
+            command.replace(/</g, "&lt;");
+
+        response.appendChild(line);
+
+
+        const aiResponse =
+            document.createElement("div");
+
+        const lowerCommand =
+            command.toLowerCase();
+
+
+        if (lowerCommand === "status") {
+
+            aiResponse.textContent =
+                "SENTRIX: All monitored systems are operational.";
+
+        }
+
+        else if (lowerCommand === "help") {
+
+            aiResponse.textContent =
+                "SENTRIX: Available commands: status, scan, alerts, threats, health, clear.";
+
+        }
+
+        else if (lowerCommand === "scan") {
+
+            aiResponse.textContent =
+                "SENTRIX: Security scan initiated.";
+
+        }
+
+        else if (lowerCommand === "alerts") {
+
+            aiResponse.textContent =
+                "SENTRIX: Opening security alerts.";
+
+            if (typeof showPage === "function") {
+                showPage("alerts");
+            }
+
+        }
+
+        else if (lowerCommand === "threats") {
+
+            aiResponse.textContent =
+                "SENTRIX: Opening threat intelligence.";
+
+            if (typeof showPage === "function") {
+                showPage("threats");
+            }
+
+        }
+
+        else if (lowerCommand === "health") {
+
+            aiResponse.textContent =
+                "SENTRIX: Running system health diagnostics.";
+
+            if (typeof showPage === "function") {
+                showPage("health");
+            }
+
+            if (typeof checkHealth === "function") {
+                checkHealth();
+            }
+
+        }
+
+        else if (lowerCommand === "clear") {
+
+            response.innerHTML = "";
+
+            input.value = "";
+
+            return;
+
+        }
+
+        else {
+
+            aiResponse.textContent =
+                "SENTRIX: Command not recognized. Type 'help'.";
+
+        }
+
+
+        response.appendChild(aiResponse);
+
+        response.scrollTop =
+            response.scrollHeight;
+
+        input.value = "";
+
+    }
+
+
+    /*
+     * ENTER KEY SUPPORT
+     */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            const input =
+                document.getElementById("terminal-input");
+
+            if (input) {
+
+                input.addEventListener(
+                    "keydown",
+                    function (event) {
+
+                        if (event.key === "Enter") {
+
+                            executeTerminalCommand();
+
+                        }
+
+                    }
+                );
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
